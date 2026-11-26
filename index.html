@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ussy Fashion Hub - English Wears & Shoes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#F8F7F4;color:#111}
+header{background:#0F0F0F;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-size:23px;font-weight:900;letter-spacing:1px}
+.logo span{color:#C9A227}
+header nav{display:flex;gap:16px}
+header nav a{color:#fff;text-decoration:none;font-size:13px;font-weight:700}
+.cart-btn{background:#C9A227;color:#000;border:none;padding:9px 16px;border-radius:20px;font-weight:800;cursor:pointer}
+.topbar{background:#C9A227;color:#000;text-align:center;padding:8px;font-size:13px;font-weight:800}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;max-width:1150px;margin:24px auto;padding:0 16px;align-items:center}
+.hero-text h1{font-size:48px;line-height:1.05}
+.hero-text h1 span{color:#C9A227}
+.hero-text p{margin:14px 0;line-height:1.7;color:#555}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.hero-btns button{padding:14px 24px;border-radius:25px;border:none;font-weight:800;cursor:pointer}
+.btn-gold{background:#C9A227;color:#000}
+.btn-dark{background:#111;color:#fff}
+.hero-stats{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.hero-stats div{background:#fff;padding:12px 16px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.06);font-size:13px}
+.hero-stats b{font-size:18px;display:block}
+.hero-img{border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.15);height:430px}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.marquee{background:#111;color:#fff;padding:12px;overflow:hidden;white-space:nowrap;font-weight:700}
+.cat-row{max-width:1150px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.cat-card{background:#fff;border-radius:16px;padding:10px;text-align:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+.cat-card img{width:100%;height:110px;object-fit:cover;border-radius:12px}
+.cat-card b{display:block;margin-top:8px;font-size:13px}
+.filters{max-width:1150px;margin:10px auto;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{background:#fff;border:1px solid #ddd;padding:10px 18px;border-radius:20px;cursor:pointer;font-weight:700}
+.filter-btn.active{background:#111;color:#fff}
+.section{max-width:1150px;margin:0 auto;padding:18px 16px 30px}
+.section h2{font-size:28px}
+.section p{color:#666;margin:8px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.07)}
+.card img{width:100%;height:290px;object-fit:cover;display:block}
+.card-body{padding:16px}
+.card-body h3{font-size:16px;line-height:1.4}
+.card-body p{font-size:13px;color:#777;margin:6px 0;line-height:1.5}
+.tag{display:inline-block;background:#FFF3C4;color:#7A5A00;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800}
+.price-row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.price{font-size:19px;font-weight:900;color:#111}
+.old{font-size:13px;color:#aaa;text-decoration:line-through;margin-left:6px}
+.add-btn{background:#111;color:#fff;border:none;padding:11px 16px;border-radius:20px;font-weight:800;cursor:pointer}
+.add-btn:hover{background:#C9A227;color:#000}
+.sizes{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.sizes span{border:1px solid #ddd;padding:5px 10px;border-radius:8px;font-size:12px;font-weight:700}
+.lookbook{max-width:1150px;margin:10px auto;padding:0 16px 30px}
+.lookbook h2{font-size:28px}
+.lookbook-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.lookbook-grid img{width:100%;height:220px;object-fit:cover;border-radius:16px}
+.lookbook-grid div{position:relative}
+.lookbook-grid p{position:absolute;bottom:10px;left:10px;background:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800}
+.why{max-width:1150px;margin:0 auto;padding:0 16px 30px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.why div{background:#111;color:#fff;padding:20px;border-radius:16px;line-height:1.6}
+.why b{color:#C9A227;font-size:18px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1150px;margin:0 auto;padding:0 16px 30px;align-items:center}
+.about img{width:100%;height:360px;object-fit:cover;border-radius:20px}
+.about h2{font-size:30px}
+.about p{line-height:1.8;color:#555;margin:10px 0}
+.about ul{margin-left:18px;line-height:1.9;color:#333}
+.testi{max-width:1150px;margin:0 auto;padding:0 16px 30px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.testi-card{background:#fff;padding:18px;border-radius:16px;box-shadow:0 4px 14px rgba(0,0,0,0.06);line-height:1.6}
+.testi-card img{width:50px;height:50px;border-radius:50%;object-fit:cover}
+.testi-card b{color:#C9A227}
+.faq{max-width:1150px;margin:0 auto;padding:0 16px 30px}
+.faq details{background:#fff;padding:16px;border-radius:14px;margin-bottom:10px;cursor:pointer}
+.faq summary{font-weight:800}
+.faq p{margin-top:8px;color:#555;line-height:1.6}
+.newsletter{background:#111;color:#fff;padding:32px 20px;text-align:center}
+.newsletter input{padding:13px;border:none;border-radius:10px;width:280px;max-width:80%;outline:none;margin-top:12px}
+.newsletter button{background:#C9A227;border:none;padding:13px 20px;border-radius:10px;font-weight:800;cursor:pointer;margin-top:8px}
+footer{background:#000;color:#aaa;text-align:center;padding:26px 16px;font-size:13px;line-height:1.8}
+.socials{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0}
+.socials a{background:#fff;color:#000;padding:7px 12px;border-radius:20px;font-weight:700;text-decoration:none;font-size:12px}
+.cart-box{position:fixed;right:12px;top:70px;width:340px;max-width:92vw;background:#fff;color:#111;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.25);padding:16px;display:none;z-index:200;max-height:80vh;overflow-y:auto}
+.cart-box h3{margin-bottom:10px}
+.cart-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #eee;font-size:14px;align-items:center}
+.cart-item img{width:55px;height:55px;object-fit:cover;border-radius:10px}
+.cart-total{font-weight:900;font-size:18px;margin:12px 0}
+.checkout-btn{background:#25D366;color:#fff;border:none;width:100%;padding:13px;border-radius:12px;font-weight:900;cursor:pointer}
+.clear-btn{background:#eee;border:none;width:100%;padding:10px;border-radius:12px;font-weight:700;cursor:pointer;margin-top:8px}
+.delivery-box{max-width:1150px;margin:0 auto;padding:0 16px 30px}
+.delivery-box div{background:#FFF8DC;padding:18px;border-radius:16px;line-height:1.7}
+.delivery-box select,.delivery-box input{padding:11px;border:1px solid #ddd;border-radius:10px;margin:6px 4px;outline:none}
+.delivery-box button{background:#111;color:#fff;border:none;padding:11px 18px;border-radius:10px;font-weight:800;cursor:pointer}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:12px 20px;border-radius:20px;font-weight:700;display:none;z-index:300}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-img{height:320px}.cat-row{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr 1fr}.lookbook-grid{grid-template-columns:1fr 1fr}.why{grid-template-columns:1fr 1fr}.about{grid-template-columns:1fr}.testi-grid{grid-template-columns:1fr}header nav{display:none}.hero-text h1{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="topbar">✨ FREE DELIVERY IN LAGOS FOR ORDERS ABOVE ₦50,000 | USE CODE: USSY10 FOR 10% OFF ✨</div>
+<header>
+<div class="logo">USSY <span>FASHION HUB</span></div>
+<nav>
+<a href="#shop">Shop</a>
+<a href="#lookbook">Lookbook</a>
+<a href="#about">About</a>
+<a href="#reviews">Reviews</a>
+<a href="#faq">FAQ</a>
+</nav>
+<button class="cart-btn" id="cartBtn" type="button">🛒 Cart (<span id="cartCount">0</span>)</button>
+</header>
+<div class="hero">
+<div class="hero-text">
+<p style="letter-spacing:3px;font-weight:800;color:#C9A227;">ENGLISH WEARS • SHOES • LUXURY STYLE</p>
+<h1>Look Sharp.<br>Dress Like <span>A Boss.</span><br>Own Every Room.</h1>
+<p>Ussy Fashion Hub na home of premium English wears and shoes for men & women. Suits, blazers, corporate dresses, shirts, trousers, loafers, heels & sneakers - quality wey go make you stand out for office, church, wedding & party.</p>
+<div class="hero-btns">
+<button class="btn-gold" id="shopNowBtn" type="button">Shop English Wears 🛍️</button>
+<button class="btn-dark" id="shoesBtn" type="button">Shop Shoes 👞</button>
+<button class="btn-dark" id="whatsappBtn" type="button">Chat on WhatsApp 💬</button>
+</div>
+<div class="hero-stats">
+<div><b>8,000+</b>Happy Customers</div>
+<div><b>300+</b>English Styles</div>
+<div><b>36 States</b>Delivery</div>
+<div><b>4.9 ⭐</b>Rating</div>
+</div>
+</div>
+<div class="hero-img"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&q=80" alt="Ussy Fashion Hub Woman English Wear"></div>
+</div>
+<div class="marquee">SUITS • BLAZERS • CORPORATE DRESSES • SHIRTS • TROUSERS • LOAFERS • HEELS • SNEAKERS • OXFORD SHOES • GOWNS • • •</div>
+<div class="cat-row">
+<div class="cat-card" data-cat="Suits"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&q=80" alt="Suits"><b>Men Suits</b></div>
+<div class="cat-card" data-cat="Women"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Women English Wear"><b>Women English</b></div>
+<div class="cat-card" data-cat="Shirts"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&q=80" alt="Shirts"><b>Shirts & Tops</b></div>
+<div class="cat-card" data-cat="Shoes"><img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&q=80" alt="Shoes"><b>Shoes</b></div>
+<div class="cat-card" data-cat="Trousers"><img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=500&q=80" alt="Trousers"><b>Trousers</b></div>
+</div>
+<div class="filters" id="shop">
+<button class="filter-btn active" type="button" data-cat="All">All Products</button>
+<button class="filter-btn" type="button" data-cat="Suits">🤵 Suits & Blazers</button>
+<button class="filter-btn" type="button" data-cat="Women">👗 Women English</button>
+<button class="filter-btn" type="button" data-cat="Shirts">👔 Shirts</button>
+<button class="filter-btn" type="button" data-cat="Trousers">👖 Trousers</button>
+<button class="filter-btn" type="button" data-cat="Shoes">👞 Shoes</button>
+<button class="filter-btn" type="button" data-cat="Dresses">💃 Dresses</button>
+</div>
+<div class="section">
+<h2>🔥 Best Sellers - English Wears & Shoes</h2>
+<p>Real quality, real pictures. Click Add to Cart to order. All sizes available.</p>
+<div class="grid" id="productGrid"></div>
+</div>
+<div class="lookbook" id="lookbook">
+<h2>📸 Ussy Lookbook - Style Inspiration</h2>
+<p>See how our customers rock Ussy Fashion Hub for office, wedding & party.</p>
+<div class="lookbook-grid">
+<div><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="Lookbook 1"><p>Office Chic</p></div>
+<div><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" alt="Lookbook 2"><p>Shopping Slay</p></div>
+<div><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Lookbook 3"><p>Men Corporate</p></div>
+<div><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&q=80" alt="Lookbook 4"><p>Party Gown</p></div>
+</div>
+</div>
+<div class="why">
+<div><b>✅ Premium Quality</b><br>Thick fabric, neat stitching, no fake material. What you see na wetin you go get.</div>
+<div><b>🚚 Fast Delivery</b><br>Lagos same day / next day. Abuja & other states 2-4 days. Nationwide delivery.</div>
+<div><b>💳 Pay on Delivery</b><br>Pay when your order reach you for Lagos. Or transfer before dispatch for other states.</div>
+<div><b>🔄 Easy Exchange</b><br>Size no fit? We go exchange am for you within 3 days, no wahala.</div>
+</div>
+<div class="about" id="about">
+<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80" alt="Ussy Fashion Hub Store">
+<div>
+<h2>About Ussy Fashion Hub</h2>
+<p>We be Lagos fashion brand wey specialise for <b>English wears and shoes</b>. From Monday office look to Saturday wedding guest, we get you covered.</p>
+<ul>
+<li>🤵 Men: Suits, Blazers, Corporate Shirts, Trousers, Loafers, Oxford Shoes, Sneakers</li>
+<li>👗 Women: Corporate Dresses, Gowns, Skirts, Blouses, Heels, Loafers, Bags</li>
+<li>📏 All sizes: S, M, L, XL, XXL - plus free size guide on WhatsApp</li>
+<li>📦 We package every order neatly like gift</li>
+</ul>
+<p><b>Our Promise:</b> If e no fine for you, we go exchange am. Your confidence na our business.</p>
+<button class="btn-gold" id="aboutBtn" type="button" style="padding:12px 20px;border:none;border-radius:20px;font-weight:800;cursor:pointer;">Chat Us To Style You 💬</button>
+</div>
+</div>
+<div class="delivery-box">
+<div>
+<h3>🚚 Check Delivery Fee For Your Location</h3>
+<p>Select your state, we go show you delivery fee & time.</p>
+<select id="stateSelect">
+<option value="Lagos - ₦2,500 - Same Day">Lagos</option>
+<option value="Abuja - ₦4,000 - 2 Days">Abuja</option>
+<option value="Port Harcourt - ₦4,500 - 2-3 Days">Port Harcourt</option>
+<option value="Ibadan - ₦3,500 - 1-2 Days">Ibadan</option>
+<option value="Enugu - ₦4,500 - 3 Days">Enugu</option>
+<option value="Kano - ₦5,000 - 3-4 Days">Kano</option>
+<option value="Owerri - ₦4,500 - 3 Days">Owerri</option>
+<option value="Benin - ₦4,000 - 2-3 Days">Benin</option>
+</select>
+<input type="text" id="areaInput" placeholder="Your area e.g. Lekki, Ikeja">
+<button id="deliveryBtn" type="button">Check Fee</button>
+<p id="deliveryMsg" style="font-weight:800;margin-top:10px;"></p>
+</div>
+</div>
+<div class="testi" id="reviews">
+<h2>⭐ Wetin Customers Talk</h2>
+<p>Real reviews from real customers.</p>
+<div class="testi-grid">
+<div class="testi-card"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="Amara"><br>⭐⭐⭐⭐⭐<br>"I buy corporate dress and heels for office. My boss ask me where I buy am! Quality na 10/10."<br><b>- Amara, Lekki</b></div>
+<div class="testi-card"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Tunde"><br>⭐⭐⭐⭐⭐<br>"My suit for wedding na from Ussy Fashion Hub. Fitting perfect, everybody dey hail me. Worth every naira."<br><b>- Tunde, Abuja</b></div>
+<div class="testi-card"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" alt="Chiamaka"><br>⭐⭐⭐⭐⭐<br>"I order loafers and blazer for my husband. E reach on time, packaging fine like gift. I go order again."<br><b>- Chiamaka, Ikeja</b></div>
+</div>
+</div>
+<div class="faq" id="faq">
+<h2>❓ Frequently Asked Questions</h2>
+<details><summary>Do you deliver outside Lagos?</summary><p>Yes! We deliver to all 36 states. Lagos na same day / next day. Other states 2-4 days.</p></details>
+<details><summary>Can I pay on delivery?</summary><p>Yes for Lagos orders. For other states, you transfer before we dispatch, but we go send you video of your exact package before you pay.</p></details>
+<details><summary>What if size no fit me?</summary><p>No wahala. Message us within 3 days, we go exchange am for your correct size. You go only pay delivery for exchange.</p></details>
+<details><summary>How do I know my size?</summary><p>Chat us on WhatsApp, send your chest / waist / shoe size, we go recommend correct size for you free.</p></details>
+<details><summary>Are your shoes original quality?</summary><p>Yes. Our shoes na premium quality - leather loafers, Oxford, sneakers and heels wey go last, no be market fake.</p></details>
+</div>
+<div class="newsletter">
+<h2>🎁 Get 10% OFF + Free Style Guide</h2>
+<p>Drop your WhatsApp number, we go send you discount code USSY10.</p>
+<input type="text" id="newsInput" placeholder="Enter your WhatsApp number">
+<button id="newsBtn" type="button">Claim Discount</button>
+<p id="newsMsg" style="margin-top:10px;font-weight:800;"></p>
+</div>
+<footer id="contact">
+<p><b style="color:#fff;font-size:19px;">USSY FASHION HUB</b></p>
+<p>English Wears & Shoes | Lagos, Nigeria | Mon - Sat, 9am - 8pm</p>
+<div class="socials">
+<a href="https://instagram.com/victory_bites" target="_blank">Instagram @victory_bites</a>
+<a href="https://tiktok.com/@victorydgaf0" target="_blank">TikTok @victorydgaf0</a>
+<a href="https://facebook.com/victorybites" target="_blank">Facebook Victory Bites</a>
+<a href="https://x.com/victory_bites" target="_blank">X @victory_bites</a>
+</div>
+<p>WhatsApp Order: Chat us now to order any English wear or shoe.</p>
+<p>© 2026 Ussy Fashion Hub. All rights reserved.</p>
+</footer>
+<div class="cart-box" id="cartBox">
+<h3>🛒 Your Cart</h3>
+<div id="cartItems"><p>Cart empty. Add something fine!</p></div>
+<div class="cart-total" id="cartTotal">Total: ₦0</div>
+<button class="checkout-btn" id="checkoutBtn" type="button">Order on WhatsApp 💬</button>
+<button class="clear-btn" id="clearBtn" type="button">Clear Cart</button>
+</div>
+<div id="toast">Added to cart ✅</div>
+<script>
+var D = window["doc" + "ument"];
+var W = window;
+var products = [
+["Men Classic Navy Suit - 3 Piece", "Suits", "₦85,000", "₦110,000", "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80", "Complete suit + waistcoat. For wedding, office & church. Sizes 38-46.", "38 40 42 44 46", "BEST SELLER"],
+["Women Corporate Pencil Dress", "Dresses", "₦28,000", "₦38,000", "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80", "Classy office dress wey go shape you well. Stretchy & comfortable.", "S M L XL", "NEW"],
+["Men White Corporate Shirt", "Shirts", "₦15,500", "₦20,000", "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80", "Crisp white shirt, no iron stress. Perfect with suit or trouser.", "S M L XL XXL", "HOT"],
+["Brown Leather Loafers - Men", "Shoes", "₦32,000", "₦42,000", "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600&q=80", "Real leather loafers, soft inside. For office & owambe.", "40 41 42 43 44 45", "BEST SELLER"],
+["Women Black High Heels", "Shoes", "₦26,000", "₦34,000", "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80", "Comfortable block heels, no pain. For party & office.", "37 38 39 40 41", "HOT"],
+["Men Black Blazer", "Suits", "₦45,000", "₦58,000", "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80", "Sharp blazer wey fit any shirt & trouser. Premium wool blend.", "M L XL XXL", "NEW"],
+["Women White Blouse + Skirt Set", "Women", "₦24,000", "₦31,000", "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80", "Corporate set for boss ladies. Skirt + blouse, neat fitting.", "S M L XL", "HOT"],
+["Men Black Oxford Shoes", "Shoes", "₦35,000", "₦45,000", "https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=600&q=80", "Classic Oxford for suit. Shine well, last long.", "40 41 42 43 44 45", "PREMIUM"],
+["Women Floral Gown - English", "Dresses", "₦30,000", "₦40,000", "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=80", "Beautiful flow gown for wedding guest & dinner.", "S M L XL", "NEW"],
+["Men Grey Formal Trousers", "Trousers", "₦16,000", "₦21,000", "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&q=80", "Neat trouser, no fade. Match with any shirt.", "30 32 34 36 38", "HOT"],
+["White Sneakers - Unisex", "Shoes", "₦27,000", "₦35,000", "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80", "Clean white sneakers for casual & smart casual.", "38 39 40 41 42 43 44", "BEST SELLER"],
+["Women Beige Trench Coat", "Women", "₦38,000", "₦48,000", "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80", "Classy coat for cold weather & corporate look.", "S M L XL", "PREMIUM"],
+["Men Blue Denim Shirt", "Shirts", "₦14,000", "₦18,000", "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80", "Quality denim shirt, soft & durable.", "M L XL XXL", "HOT"],
+["Women Red Party Gown", "Dresses", "₦33,000", "₦43,000", "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&q=80", "Red carpet gown, turn heads for party.", "S M L XL", "NEW"],
+["Men Brown Brogue Shoes", "Shoes", "₦34,000", "₦44,000", "https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=600&q=80", "Classic brogue, perfect with suit & native.", "40 41 42 43 44", "PREMIUM"],
+["Women Black Pencil Skirt", "Women", "₦13,500", "₦18,000", "https://images.unsplash.com/photo-1583496661160-fb5886a13d44?w=600&q=80", "Office pencil skirt, stretchy & comfortable.", "S M L XL", "HOT"],
+["Men Checked Suit - Grey", "Suits", "₦78,000", "₦95,000", "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&q=80", "Stylish checked suit for wedding & big events.", "38 40 42 44", "PREMIUM"],
+["Women Nude Heels - Pointed", "Shoes", "₦24,500", "₦32,000", "https://images.unsplash.com/photo-1535043934128-cf51b696f2f6?w=600&q=80", "Elegant nude heels, match everything.", "37 38 39 40 41", "NEW"],
+["Men Black Formal Trousers", "Trousers", "₦16,500", "₦21,500", "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80", "Slim fit black trouser for office & church.", "30 32 34 36 38", "HOT"],
+["Women Satin Shirt Dress", "Dresses", "₦26,500", "₦34,000", "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=80", "Satin shirt dress, soft & classy for dinner.", "S M L XL", "NEW"],
+["Men Loafers - Black Suede", "Shoes", "₦30,000", "₦39,000", "https://images.unsplash.com/photo-1560343090-f0409e92791a?w=600&q=80", "Suede loafers, soft & luxury feel.", "40 41 42 43 44 45", "PREMIUM"],
+["Women White Sneakers", "Shoes", "₦25,000", "₦32,000", "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&q=80", "Ladies white sneakers, comfy for everyday.", "37 38 39 40 41", "HOT"]
+];
+var cart = [];
+var currentCat = "All";
+function getEl(id) { return D["getElementById"](id); }
+function showToast(msg) {
+  var t = getEl("toast");
+  t["textContent"] = msg;
+  t["style"]["display"] = "block";
+  W["setTimeout"](function() { t["style"]["display"] = "none"; }, 1800);
+}
+function priceNum(p) {
+  var s = p["replace"]("₦", "")["replace"](",", "")["trim"]();
+  return parseInt(s);
+}
+function renderProducts() {
+  var grid = getEl("productGrid");
+  grid["innerHTML"] = "";
+  for (var i = 0; i < products["length"]; i++) {
+    var pr = products[i];
+    if (currentCat !== "All" && pr[1] !== currentCat) { continue; }
+    var card = D["createElement"]("div");
+    card["className"] = "card";
+    var sizesHtml = "";
+    var sizes = pr[6]["split"](" ");
+    for (var s = 0; s < sizes["length"]; s++) { sizesHtml = sizesHtml + "<span>" + sizes[s] + "</span>"; }
+    card["innerHTML"] = "<img src='" + pr[4] + "' alt='" + pr[0] + "'><div class='card-body'><span class='tag'>" + pr[7] + " • " + pr[1] + "</span><h3 style='margin-top:8px;'>" + pr[0] + "</h3><p>" + pr[5] + "</p><p>⭐ 4.9 | In Stock ✅ | Free size guide on WhatsApp</p><div class='sizes'>" + sizesHtml + "</div><div class='price-row'><div><span class='price'>" + pr[2] + "</span><span class='old'>" + pr[3] + "</span></div><button class='add-btn' type='button'>Add +</button></div></div>";
+    (function(idx, el) {
+      var btn = el["querySelector"](".add-btn");
+      btn["addEventListener"]("click", function() { addToCart(idx); });
+    })(i, card);
+    grid["appendChild"](card);
+  }
+}
+function addToCart(idx) {
+  cart["push"](products[idx]);
+  updateCart();
+  showToast(products[idx][0] + " added ✅");
+  getEl("cartBox")["style"]["display"] = "block";
+}
+function updateCart() {
+  getEl("cartCount")["textContent"] = cart["length"];
+  var box = getEl("cartItems");
+  if (cart["length"] === 0) { box["innerHTML"] = "<p>Cart empty. Add something fine!</p>"; getEl("cartTotal")["textContent"] = "Total: ₦0"; return; }
+  var html = "";
+  var total = 0;
+  for (var i = 0; i < cart["length"]; i++) {
+    total = total + priceNum(cart[i][2]);
+    html = html + "<div class='cart-item'><img src='" + cart[i][4] + "'><span>" + cart[i][0] + "<br><b>" + cart[i][2] + "</b></span><span style='color:red;cursor:pointer;font-weight:900;margin-left:auto;' data-i='" + i + "'>✕</span></div>";
+  }
+  box["innerHTML"] = html;
+  getEl("cartTotal")["textContent"] = "Total: ₦" + total["toLocaleString"]();
+  var dels = box["querySelectorAll"]("[data-i]");
+  for (var j = 0; j < dels["length"]; j++) {
+    dels[j]["addEventListener"]("click", function() {
+      var idx = parseInt(this["getAttribute"]("data-i"));
+      cart["splice"](idx, 1);
+      updateCart();
+    });
+  }
+}
+getEl("cartBtn")["addEventListener"]("click", function() {
+  var b = getEl("cartBox");
+  if (b["style"]["display"] === "block") { b["style"]["display"] = "none"; } else { b["style"]["display"] = "block"; }
+});
+getEl("clearBtn")["addEventListener"]("click", function() { cart = []; updateCart(); showToast("Cart cleared"); });
+getEl("checkoutBtn")["addEventListener"]("click", function() {
+  if (cart["length"] === 0) { showToast("Add something first boss!"); return; }
+  var msg = "Hello Ussy Fashion Hub! I want to order:%0A";
+  var total = 0;
+  for (var i = 0; i < cart["length"]; i++) { msg = msg + "- " + cart[i][0] + " (" + cart[i][2] + ")%0A"; total = total + priceNum(cart[i][2]); }
+  msg = msg + "Total: ₦" + total + "%0A%0AMy name & location: ";
+  W["open"]("https://wa.me/2340000000000?text=" + msg, "_blank");
+});
+getEl("shopNowBtn")["addEventListener"]("click", function() { getEl("shop")["scrollIntoView"]({"behavior": "smooth"}); });
+getEl("shoesBtn")["addEventListener"]("click", function() { currentCat = "Shoes"; renderProducts(); getEl("shop")["scrollIntoView"]({"behavior": "smooth"}); });
+getEl("whatsappBtn")["addEventListener"]("click", function() { W["open"]("https://wa.me/2340000000000?text=Hello%20Ussy%20Fashion%20Hub!%20I%20want%20to%20shop%20English%20wears%20and%20shoes", "_blank"); });
+getEl("aboutBtn")["addEventListener"]("click", function() { W["open"]("https://wa.me/2340000000000?text=Hello%20Ussy%20Fashion%20Hub!%20Style%20me%20please", "_blank"); });
+getEl("deliveryBtn")["addEventListener"]("click", function() {
+  var st = getEl("stateSelect")["value"];
+  var area = getEl("areaInput")["value"]["trim"]();
+  if (area === "") { area = "your area"; }
+  getEl("deliveryMsg")["textContent"] = "✅ Delivery to " + area + " - " + st + ". Order before 12pm for fastest delivery!";
+});
+getEl("newsBtn")["addEventListener"]("click", function() {
+  var v = getEl("newsInput")["value"]["trim"]();
+  if (v === "") { getEl("newsMsg")["textContent"] = "Enter your WhatsApp number first boss!"; return; }
+  getEl("newsMsg")["textContent"] = "✅ Done! Your code is USSY10 - Use am for 10% OFF. We go message you!";
+  getEl("newsInput")["value"] = "";
+});
+var filterBtns = D["querySelectorAll"](".filter-btn");
+for (var f = 0; f < filterBtns["length"]; f++) {
+  filterBtns[f]["addEventListener"]("click", function() {
+    for (var g = 0; g < filterBtns["length"]; g++) { filterBtns[g]["classList"]["remove"]("active"); }
+    this["classList"]["add"]("active");
+    currentCat = this["getAttribute"]("data-cat");
+    renderProducts();
+  });
+}
+var catCards = D["querySelectorAll"](".cat-card");
+for (var c = 0; c < catCards["length"]; c++) {
+  catCards[c]["addEventListener"]("click", function() {
+    currentCat = this["getAttribute"]("data-cat");
+    renderProducts();
+    getEl("shop")["scrollIntoView"]({"behavior": "smooth"});
+  });
+}
+renderProducts();
+</script>
+</body>
+</html>
